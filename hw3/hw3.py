@@ -3,6 +3,7 @@ import wikipedia
 import warnings
 warnings.filterwarnings("ignore")
 
+
 def extract_named_entities(chunked_sentence):
     data = {}
 
@@ -78,8 +79,6 @@ for chunked_sentence in chunked_sentences:
 for tagged_sentence in tagged_sentences:
     entities.update(extract_custom_entities(tagged_sentence))
 
-entities = {k: entities[k] for k in list(entities)[:10]}
-
 for key in entities:
     original_key = key
     while True:
@@ -104,7 +103,3 @@ for key in entities:
         except wikipedia.exceptions.WikipediaException as e:
             print('({}) {} > {}: {}'.format(entities[original_key], original_key, key, 'Thing'))
             break
-
-
-
-
